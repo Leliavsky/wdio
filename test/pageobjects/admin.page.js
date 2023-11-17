@@ -7,12 +7,17 @@ const Page = require('./page');
 class AdminPage extends Page {
 
     get dropDownJob () {
-        return $('span.oxd-topbar-body-nav-tab-item');
+        return $('//span[contains(text(), \'Job\')]');
     }
     
     get payGrades () {
-        return $('a.oxd-topbar-body-nav-tab-link:contains("Pay Grades")');
+        return $('//a[text()=\'Pay Grades\']');
     }
+
+    async clickOnJob () {
+        await this.dropDownJob.click();
+    }
+    
 }
 
 module.exports = new AdminPage();
