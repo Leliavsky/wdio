@@ -34,6 +34,8 @@ class PayGradesComponent extends Page {
     async clickOnCurrenciesAddBtn() {
         await this.currenciesAddBtn.click();
     }
+
+    
 }
 
 module.exports = new PayGradesComponent();

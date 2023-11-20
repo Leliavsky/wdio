@@ -4,7 +4,7 @@ const Page = require('./page');
 class CurrenciesComponent extends Page {
 
     get currencyDropDown() {
-        return $('//i[@class=\'oxd-icon bi-caret-down-fill oxd-select-text--arrow\']')
+        return $('//i[@class=\'oxd-icon bi-caret-down-fill oxd-select-text--arrow\']');
     }
 
     get selectDD() {
@@ -12,30 +12,45 @@ class CurrenciesComponent extends Page {
     }
 
     get selectCurrency() {
-        return $('//span[@data-v-13cf171c="" and text()="AED - Utd. Arab Emir. Dirham"]')
+        return $('//span[@data-v-13cf171c="" and text()="AED - Utd. Arab Emir. Dirham"]');
     }
 
-    setMinMaxSelary(){
-        const inputElements = $$("//input[@class='oxd-input oxd-input--active']");
-
-        const thirdElement = inputElements[2];
-        const fourthElement = inputElements[3];
-
-        thirdElement.setValue("1000");
-        fourthElement.setValue("10000000");
-        const btnSubmit = $$('//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"]')
-        btnSubmit[1].click()
+    get inputElements() {
+        return $$("//input[@class='oxd-input oxd-input--active']");
     }
+
+    get submitBtn (){
+        const btnSubmit = $$('//button[@class="oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space"]');
+        return btnSubmit[1];
+    }
+
+    get cancelBtn (){
+        const btnSubmit = $$('//button[@class="oxd-button oxd-button--medium oxd-button--ghost"]');
+        return btnSubmit[1];
+    }
+
+    get currencyBlock(){
+        return $('//div[@class="oxd-table-card"]');
+    }
+
+    get elementsOfCurrencyBlock() {
+        return $$('//div[@class=\'oxd-table-cell oxd-padding-cell\']');
+    }
+
     
-    // async pickUsd(text) {
-    //     const selectBox = await $('#div[role="listbox"]');
-    //     const value = await selectBox.getValue();
-    //     await selectBox.selectByVisibleText(text)
-    //     console.log(value); // returns "someValue0"
-    //     console.log(await selectBox.getValue());
-    
-    //     // await selectBox.selectByAttribute('value', 'someValue3');
-    // }
+
+    async setMinMaxSalary(min, max){
+        await this.inputElements[3].setValue(max);
+        await this.inputElements[2].setValue(min);
+    }
+
+    async clickOnBtnSubmit(){
+        await this.submitBtn.click();
+    }
+
+    async clickOnBtnCancel(){
+        await this.cancelBtn.click();
+    }
 }
 
 module.exports = new CurrenciesComponent();

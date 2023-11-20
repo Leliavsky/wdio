@@ -35,7 +35,8 @@ class LoginPage extends Page {
      * overwrite specific options to adapt it to page object
      */
     open () {
-        return super.open('web/index.php/auth/login');
+        super.open('web/index.php/auth/login');
+        browser.maximizeWindow();
     }
 }
 
