@@ -4,11 +4,12 @@ const AdminPage = require('../pageobjects/admin.page')
 const SideBarMenuPage = require('../pageobjects/side-bar-menu.page')
 const PayGradesComponent = require('../pageobjects/pay-grades.component')
 const CurrenciesComponent = require('../pageobjects/currencies.component')
+const { after, afterEach } = require('mocha');
 
 describe('Scenario 1', () => {
     it('should add new pay grades', async () => {
         
-        LoginPage.open();
+        await LoginPage.open();
         await LoginPage.login('Admin', 'admin123');
 
         await SideBarMenuPage.clickOnAdmin();
@@ -38,16 +39,14 @@ describe('Scenario 1', () => {
         await AdminPage.payGrades.click();
         await PayGradesComponent.clickOnTrashBtnSuperGrade();
         await PayGradesComponent.clickConfirmYesDelete();
-        
+        await browser.reloadSession()
     });
-    
-    
 });
 
 describe('Scenario 2', () => {
     it('should data not visible after cancel', async () => {
             
-        LoginPage.open();
+        await LoginPage.open();
         await LoginPage.login('Admin', 'admin123');
     
         await SideBarMenuPage.clickOnAdmin();

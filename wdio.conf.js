@@ -210,6 +210,14 @@ exports.config = {
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
      */
+    // before: function (capabilities, specs) {
+    //     browser.url('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+    //     browser.maximizeWindow();
+    //   },
+    
+    //   after: function (result, capabilities, specs) {
+    //     browser.reloadSession();
+    //   },
     // beforeHook: function (test, context, hookName) {
     // },
     /**
