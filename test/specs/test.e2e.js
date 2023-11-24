@@ -8,7 +8,7 @@ const CurrenciesComponent = require('../pageobjects/currencies.component')
 describe('Scenario 1', () => {
     it('should add new pay grades', async () => {
         
-        await LoginPage.open();
+        LoginPage.open();
         await LoginPage.login('Admin', 'admin123');
 
         await SideBarMenuPage.clickOnAdmin();
@@ -33,13 +33,21 @@ describe('Scenario 1', () => {
         const maxSalary = await CurrenciesComponent.elementsOfCurrencyBlock[3].getText();
         expect(minSalary).toBe("1000.00");
         expect(maxSalary).toBe("100000.00");
-       
-    })
-})
+
+        await AdminPage.clickOnJob();
+        await AdminPage.payGrades.click();
+        await PayGradesComponent.clickOnTrashBtnSuperGrade();
+        await PayGradesComponent.clickConfirmYesDelete();
+        
+    });
+    
+    
+});
+
 describe('Scenario 2', () => {
-    it.only('should data not visible after cancel', async () => {
+    it('should data not visible after cancel', async () => {
             
-        await LoginPage.open();
+        LoginPage.open();
         await LoginPage.login('Admin', 'admin123');
     
         await SideBarMenuPage.clickOnAdmin();
@@ -55,12 +63,17 @@ describe('Scenario 2', () => {
         await CurrenciesComponent.currencyDropDown.click();
         await CurrenciesComponent.selectCurrency.click();
         const min = "1000";
-        const max = "100000"
+        const max = "100000";
         await CurrenciesComponent.setMinMaxSalary(min, max);
         await CurrenciesComponent.clickOnBtnCancel();
            
         await AdminPage.clickOnJob();
         await AdminPage.payGrades.click();
- 
-        })
-})
+        
+        expect(await PayGradesComponent.findName.getText()).toBe('CancelGrade');
+        expect(PayGradesComponent.getTextCurrencyField()).toHaveTextContaining('');
+        await PayGradesComponent.clickOnTrashBtn();
+        await PayGradesComponent.clickConfirmYesDelete();
+        });
+});
+

@@ -19,6 +19,26 @@ class PayGradesComponent extends Page {
         return $('//button[@class="oxd-button oxd-button--medium oxd-button--secondary"]');
     }
 
+    get findName() {
+        return $('//*[contains(text(),\'CancelGrade\')]');
+    }
+
+    get findTrashBtn() {
+        return $("//*[contains(text(),'CancelGrade')]/../following-sibling::div[2]//button[@class='oxd-icon-button oxd-table-cell-action-space'][1]");
+    }
+
+    get findTrashBtnOfSuperGrade() {
+        return $("//*[contains(text(),'SuperGrade')]/../following-sibling::div[2]//button[@class='oxd-icon-button oxd-table-cell-action-space'][1]");
+    }
+
+    get findCurrencyField() {
+        return $("//*[contains(text(),'CancelGrade')]/../following-sibling::div[1]")
+    }
+
+    get confirmYesDelete() {
+        return $("//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin']");
+    }
+
     async clickOnAddBtn () {
         await this.btnAdd.click();
     }
@@ -35,6 +55,21 @@ class PayGradesComponent extends Page {
         await this.currenciesAddBtn.click();
     }
 
+    async clickOnTrashBtn() {
+        await this.findTrashBtn.click();
+    }
+
+    async clickOnTrashBtnSuperGrade() {
+        await this.findTrashBtnOfSuperGrade.click();
+    }
+
+    async clickConfirmYesDelete() {
+        await this.confirmYesDelete.click();
+    }
+
+    async getTextCurrencyField() {
+        await this.findCurrencyField.getText();
+    }
     
 }
 
