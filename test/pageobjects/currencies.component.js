@@ -1,4 +1,4 @@
-const { $ } = require('@wdio/globals')
+const { $ } = require('@wdio/globals');
 const Page = require('./page');
 
 class CurrenciesComponent extends Page {
@@ -16,7 +16,7 @@ class CurrenciesComponent extends Page {
     }
 
     get inputElements() {
-        return $$("//input[@class='oxd-input oxd-input--active']");
+        return $$('//input[@class=\'oxd-input oxd-input--active\']');
     }
 
     get submitBtn (){
@@ -36,8 +36,6 @@ class CurrenciesComponent extends Page {
     get elementsOfCurrencyBlock() {
         return $$('//div[@class=\'oxd-table-cell oxd-padding-cell\']');
     }
-
-    
 
     async setMinMaxSalary(min, max){
         await this.inputElements[3].setValue(max);

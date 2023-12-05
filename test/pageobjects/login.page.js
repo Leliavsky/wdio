@@ -1,4 +1,4 @@
-const { $ } = require('@wdio/globals')
+const { $ } = require('@wdio/globals');
 const Page = require('./page');
 
 /**
@@ -11,7 +11,6 @@ class LoginPage extends Page {
     get inputUsername () {
         return $('.oxd-input');
     }
-    
 
     get inputPassword () {
         return $('//input[@class="oxd-input oxd-input--active"][@name="password"]');

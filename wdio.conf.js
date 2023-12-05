@@ -131,7 +131,7 @@ exports.config = {
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
-    },
+    }
 
     //
     // =====
@@ -239,7 +239,6 @@ exports.config = {
     // afterTest: function(test, context, { error, result, duration, passed, retries }) {
     // },
 
-
     /**
      * Hook that gets executed after the suite has ended
      * @param {object} suite suite details
@@ -289,4 +288,4 @@ exports.config = {
     */
     // onReload: function(oldSessionId, newSessionId) {
     // }
-}
+};

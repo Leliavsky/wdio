@@ -1,4 +1,4 @@
-const { browser } = require('@wdio/globals')
+const { browser } = require('@wdio/globals');
 
 /**
 * main page object containing all methods, selectors and functionality
@@ -10,10 +10,10 @@ module.exports = class Page {
     * @param path path of the sub page (e.g. /path/to/page.html)
     */
     open (path) {
-        return browser.url(`https://opensource-demo.orangehrmlive.com/${path}`)
+        return browser.url(`https://opensource-demo.orangehrmlive.com/${path}`);
     }
 
     afterTest() {
         browser.closeWindow();
     }
-}
+};

@@ -1,10 +1,10 @@
-const { $ } = require('@wdio/globals')
+const { $ } = require('@wdio/globals');
 const Page = require('./page');
 
 class PayGradesComponent extends Page {
 
     get inputName() {
-        return $('//form//input[@class="oxd-input oxd-input--active"]')
+        return $('//form//input[@class="oxd-input oxd-input--active"]');
     }
 
     get btnAdd () {
@@ -24,19 +24,19 @@ class PayGradesComponent extends Page {
     }
 
     get findTrashBtn() {
-        return $("//*[contains(text(),'CancelGrade')]/../following-sibling::div[2]//button[@class='oxd-icon-button oxd-table-cell-action-space'][1]");
+        return $('//*[contains(text(),\'CancelGrade\')]/../following-sibling::div[2]//button[@class=\'oxd-icon-button oxd-table-cell-action-space\'][1]');
     }
 
     get findTrashBtnOfSuperGrade() {
-        return $("//*[contains(text(),'SuperGrade')]/../following-sibling::div[2]//button[@class='oxd-icon-button oxd-table-cell-action-space'][1]");
+        return $('//*[contains(text(),\'SuperGrade\')]/../following-sibling::div[2]//button[@class=\'oxd-icon-button oxd-table-cell-action-space\'][1]');
     }
 
     get findCurrencyField() {
-        return $("//*[contains(text(),'CancelGrade')]/../following-sibling::div[1]")
+        return $('//*[contains(text(),\'CancelGrade\')]/../following-sibling::div[1]');
     }
 
     get confirmYesDelete() {
-        return $("//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin']");
+        return $('//button[@class=\'oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin\']');
     }
 
     async clickOnAddBtn () {
